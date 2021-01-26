@@ -1,0 +1,632 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ :root {
+    --bg-color: #192229;
+    --bg-color-form: #212e36;
+    --bg-color-input-submit: rgba(109, 99, 255, 1);
+    --bg-color-input: #e9e9e9;
+    --font-color: rgb(239, 243, 245);
+    --box-shadow-color: rgba(255, 255, 255, 0.1);
+    --border-color: #DDD;
+    --font-color-label: rgb(160, 167, 172);
+    --bg-progges: #f5f5f5;
+    --font-color-progges: #3f3f4b;
+    --bg-progges-line: #fcfcfc;
+    --bg-color-progges-active: #ddffdd;
+    --color-primary: #A5ABB0;
+    --color-secundary: #f5f8f8;
+    --color-third: #3f3f4c;
+    --font-color-submit: #dddddd;
+    --font-color-input-error: #deeff9;
+    --font-color-icon: #c2c2c2;
+    --font-color-icon-hover: #aca8a8;
+    --formulario-correcto: #0075A2;
+    --formulario-incorrecto: #ef233c;
+    --bg-message--error: #ff5a5f;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--bg-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-structure {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+}
+
+.change {
+    width: 100%;
+    padding: 1rem;
+    height: 1rem;
+    margin-top: 1rem;
+}
+
+.change-color {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 2rem;
+    left: -3rem;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--bg-color-form);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    /* box-shadow: 0 0 2px 1px var(--box-shadow-color); */
+    max-width: 400px;
+    margin: auto;
+    margin-top: 6rem;
+    position: relative;
+    z-index: 10;
+}
+
+input:focus-within+label,
+input:not(:placeholder-shown)+label span {
+    opacity: 0;
+}
+
+input:placeholder-shown+label::before {
+    opacity: 0;
+}
+
+.container:focus-within label {
+    opacity: 1;
+}
+
+.container label::before {
+    content: attr(data-content);
+    width: 100%;
+    position: absolute;
+    top: -1.1rem;
+    transform: translateY(-50%);
+    opacity: 1;
+    font-size: 0.70rem;
+    color: var()
+}
+
+.form-registre h2 {
+    color: var(--font-color);
+    margin-bottom: 0;
+    font-size: 1.75rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.title-registre {
+    padding: 1.25rem;
+    width: 100%;
+    position: absolute;
+    top: 2rem;
+    z-index: 10;
+    border-radius: 0.25rem;
+    background-color: var(--bg-color-form);
+}
+
+form fieldset {
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75rem;
+    flex-grow: 1;
+    position: relative;
+    background-color: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.container label {
+    order: -1;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    color: var(--font-color-label);
+}
+
+.container input:focus-within {
+    outline: none;
+}
+
+.container input,
+.container select {
+    position: relative;
+    border: none;
+    padding: 1.25rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    background: none;
+    border-bottom: 0.1rem solid var(--border-color);
+    transition: border-color 0.2s ease;
+}
+
+select#country,
+select#city {
+    color: var(--font-color-label);
+    font-family: "Roboto", sans-serif;
+    font-size: 0.85rem;
+}
+
+select#country option,
+select#city option {
+    padding: 1.25rem 1rem;
+    font-size: 1rem;
+}
+
+legend {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.container input:focus-within+label span {
+    opacity: 0;
+}
+
+.container input:focus-within+label::before {
+    opacity: 1;
+}
+
+form fieldset:not(:first-of-type) {
+    display: none;
+}
+
+form fieldset.next {
+    display: none;
+}
+
+form fieldset:nth-of-type(2).nextactive {
+    display: flex;
+}
+
+.container.next,
+.container.submit {
+    margin-top: 1rem;
+}
+
+.form-registre {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form input[type="submit"],
+form input[type="button"] {
+    background-color: var(--bg-color-input-submit);
+    color: var(--font-color-submit);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+
+/* form input[type="submit"]:active,
+  form input[type="button"]:active {
+      background-color: var(--bg-color);
+      color: var(--font-color-submit);
+  }
+   */
+
+fieldset legend {
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+.container label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.container label span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sub-container {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+    flex-basis: 40%;
+}
+
+.container.direction,
+.container.email,
+.container.next {
+    width: 100%;
+}
+
+.img-form {
+    width: 100%;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+.img-form svg {
+    width: 100%;
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 90px;
+    right: -1rem;
+    bottom: -30rem;
+}
+
+.container:hover,
+.container:focus-within,
+.container.pass:hover .icon-password,
+.container.pass:focus-within .icon-password,
+.container.number:hover .icon-phone,
+.container.number:focus-within .icon-phone {
+    background-color: var(--bg-color);
+}
+
+.container.submit:hover,
+.container.submit:focus-within,
+.container.next:hover,
+.container.next:focus-within {
+    background-color: transparent;
+}
+
+input::placeholder {
+    opacity: 0;
+}
+
+.formulario-input {
+    width: 100%;
+}
+
+.container.pass,
+.container.number {
+    position: relative;
+}
+
+.container.pass .icon-password,
+.container.number .icon-phone {
+    position: absolute;
+    right: 0.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    margin: auto;
+    background-color: var(--bg-color-form);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--font-color-icon)
+}
+
+.container.pass .icon-password:hover,
+.container.number .icon-phone:hover {
+    color: var(--font-color-icon-hover)
+}
+
+.container .icon-password,
+.container .icon-phone {
+    cursor: pointer;
+}
+
+.input-error {
+    font-size: 12px;
+    padding-top: 1rem;
+    color: var(--font-color-input-error);
+    padding-left: 0.25rem;
+    width: 100%;
+    text-overflow: ellipsis;
+    display: none;
+    position: relative;
+}
+
+.input-error-activo {
+    display: block;
+}
+
+.input-error p::before {
+    content: "\2731";
+    font-size: 0.5rem;
+    margin-right: 0.2rem;
+}
+
+.input-error-hidden {
+    display: none;
+}
+
+#barprogess {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    margin-top: 1rem;
+    counter-reset: step;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: -1rem;
+    margin-top: 1rem;
+}
+
+#barprogess ul {
+    list-style-type: none;
+    font-size: 0.75rem;
+    color: var(--font-color);
+    position: relative;
+    z-index: 100;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#barprogess ul li {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#barprogess ul li::before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: -1.5rem;
+    border-radius: 0.25rem;
+    margin-right: 0;
+    background-color: var(--bg-progges);
+    color: var(--font-color-progges);
+}
+
+#barprogess ul li::after {
+    content: "";
+    display: block;
+    width: 130px;
+    left: 4rem;
+    height: 2px;
+    position: absolute;
+    top: -1rem;
+    background-color: var(--bg-progges-line);
+    z-index: -1;
+}
+
+#barprogess ul li:first-child::after {
+    content: none;
+}
+
+#barprogess ul li.active::before {
+    background-color: var(--color-primary);
+    color: var(--color-secundary);
+}
+
+#sun-moon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-secundary);
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    position: relative;
+    z-index: 100;
+}
+
+#sun-moon::before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    background-color: var(--color-primary);
+    transition: border-radius 0.5s ease, background-color 0.5s ease, width 0.5s ease, transform 0.5s ease;
+}
+
+#sun-moon::after {
+    content: "";
+    white-space: nowrap;
+    text-indent: 4px;
+    line-height: 45px;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid var(--color-secundary);
+    box-shadow: 0 0 0 0 var(--color-secundary), 0 0 0 3px var(--color-primary), 0 0 0 100px var(--color-secundary);
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+body.night #sun-moon::before {
+    background: var(--color-third);
+    border-radius: 50%;
+    width: 150%;
+    transform: translate(-5%, -35%) rotate(-25deg)
+}
+
+body.night #sun-moon::after {
+    content: "";
+    display: block;
+    box-shadow: 0 0 0 0 var(--color-third), 0 0 0 0 var(--color-third), 0 0 0 3px var(--color-secundary), 0 0 0 100px var(--color-third);
+    border-color: var(--color-third);
+}
+
+.structure-main {
+    margin-top: -4rem;
+    position: relative;
+    width: 100%;
+    background-color: white;
+    height: 200px;
+}
+
+.structure-social {
+    position: relative;
+    z-index: 1000;
+}
+
+.structure-social .github {
+    position: fixed;
+    bottom: 0.15rem;
+    right: 0.5rem;
+}
+
+.structure-social .dribble {
+    position: fixed;
+    bottom: 0.15rem;
+    right: 3.8rem;
+}
+
+
+/* Divisor */
+
+.custom-shape-divider-top-1611607782 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    background-color: white;
+}
+
+.custom-shape-divider-top-1611607782 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 100px;
+}
+
+.custom-shape-divider-top-1611607782 .shape-fill {
+    fill: var(--bg-color);
+}
+
+
+/* Validaciones de input */
+
+.form-succeful {
+    width: 100%;
+}
+
+.form-error,
+.form-succeful {
+    display: none;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    height: auto;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 1);
+}
+
+.form-error {
+    background-color: var(--bg-message--error);
+}
+
+.form-succeful {
+    background-color: lightgreen;
+}
+
+.form-succeful-activo {
+    display: block;
+}
+
+.form-error-activo {
+    display: block;
+}
+
+.form-error p span {
+    font-weight: 600;
+}
+
+.form-error p span i,
+.form-succeful i {
+    margin-right: 0.25rem;
+}
+
+.formulario-correcto input:focus,
+.formulario-correcto select:focus {
+    border-bottom: 0.1rem solid var(--formulario-correcto);
+    transition: border-color 0.2s ease;
+}
+
+.formulario-incorrecto input,
+.formulario-incorrecto select {
+    border-bottom: 0.1rem solid var(--formulario-incorrecto);
+    transition: border-color 0.2s ease;
+}
+
+
+/* Medias Queries */
+
+@media screen and (min-width:1024px) {
+    .form-structure form {
+        max-width: 600px;
+    }
+    .form-structure {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-right: 1rem;
+        gap: 1rem;
+    }
+    .img-form {
+        max-width: 500px;
+        display: block;
+    }
+    .img-form svg {
+        width: 100%;
+        position: static;
+    }
+    #barprogess {
+        margin-bottom: 0;
+    }
+    .sub-container {
+        flex-basis: auto;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .sub-container.group {
+        display: block;
+    }
+    .img-form svg {
+        display: none;
+    }
+    .input-error {
+        margin-bottom: 0.25rem;
+    }
+    .form-structure {
+        margin-top: 4rem;
+    }
+    .container {
+        margin-bottom: 0.75rem;
+    }
+}
